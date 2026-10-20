@@ -100,9 +100,21 @@
       const r = riga.trim();
       const h2 = r.match(/^##\s+(.+)$/);
       if (h2 && !r.startsWith('###')) {
-        // "0.0.2 · 25 ottobre 2026"  (vanno bene anche "—", "-" o "|")
-        const pezzi = h2[1].split(/\s+[·—|-]\s+/);
-        cur = { numero: pezzi[0].replace(/^v(ersione)?\s*/i, '').trim(), data: pezzi.slice(1).join(' · ').trim(), pezzi: [] };
+        // "0.0.2 · 25 ottobre 2026 · Aggiornamento grafico"  (vanno bene anche "—", "-" o "|";
+        // data e titolo si possono scambiare o lasciar fuori: la data è il pezzo con un numero)
+        const pezzi = h2[1].split(/\s+[·—|-]\s+/).map((p) => p.trim());
+        const sembraData = (p) => /\d/.test(p) && (/gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic/i.test(p) || /^\d{1,4}[\/.\-]\d/.test(p));
+        // "· importante" (o "· aggiornamento importante") mette l'etichetta gialla
+        const segnoImportante = (p) => /^(aggiornamento\s+)?importante!?$/i.test(p);
+        const resto = pezzi.slice(1).filter((p) => !segnoImportante(p));
+        const data = resto.find(sembraData) || '';
+        cur = {
+          numero: pezzi[0].replace(/^v(ersione)?\s*/i, '').trim(),
+          importante: pezzi.slice(1).some(segnoImportante),
+          data,
+          titolo: resto.filter((p) => p !== data).join(' · '),
+          pezzi: [],
+        };
         versioni.push(cur);
         return;
       }
@@ -117,7 +129,31 @@
       } else if (ultimo && ultimo.tipo === 'frase') ultimo.html += ' ' + inline(r);
       else cur.pezzi.push({ tipo: 'frase', html: inline(r) });
     });
-    return versioni;
+    // dalla più nuova alla più vecchia, anche se nel file sono in un altro ordine:
+    // per data se ce l'hanno tutte ("22 maggio 2026", "agosto 2026", "22/05/2026"), altrimenti per numero
+    const MESI = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'];
+    const quando = (t) => {
+      let m = t.match(/(\d{1,2})\s+([a-zà]+)\s+(\d{4})/i);
+      if (m && MESI.indexOf(m[2].slice(0, 3).toLowerCase()) >= 0) return new Date(+m[3], MESI.indexOf(m[2].slice(0, 3).toLowerCase()), +m[1]).getTime();
+      // solo mese e anno ("agosto 2026"): conta come il primo del mese
+      m = t.match(/([a-zà]+)\s+(\d{4})/i);
+      if (m && MESI.indexOf(m[1].slice(0, 3).toLowerCase()) >= 0) return new Date(+m[2], MESI.indexOf(m[1].slice(0, 3).toLowerCase()), 1).getTime();
+      m = t.match(/(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})/);
+      return m ? new Date(+m[3], +m[2] - 1, +m[1]).getTime() : NaN;
+    };
+    const perData = versioni.length > 1 && versioni.every((v) => !isNaN(quando(v.data)));
+    const cifre = (v) => (v.numero.match(/\d+/g) || []).map(Number);
+    return versioni
+      .map((v, i) => ({ v, i }))
+      .sort((a, b) => {
+        if (perData && quando(a.v.data) !== quando(b.v.data)) return quando(b.v.data) - quando(a.v.data);
+        const x = cifre(a.v), y = cifre(b.v);
+        for (let k = 0; k < Math.max(x.length, y.length); k++) {
+          if ((y[k] || 0) !== (x[k] || 0)) return (y[k] || 0) - (x[k] || 0);
+        }
+        return a.i - b.i;
+      })
+      .map((o) => o.v);
   }
 
   // ------------------------------------------------------------------------
@@ -206,13 +242,39 @@
       <span class="boom">${esc(b.scritta)}</span><b>${esc(b.testo)}</b>
     </li>`).join('');
 
+  // gruppi delle novità (### Titoletto): il colore dell'etichetta dipende dalla parola
+  const tipoGruppo = (t) =>
+    /corre|bug|risol|sistem|fix/i.test(t) ? 'rosso'
+      : /grafic|interfacc|\bui\b|aspetto|stile/i.test(t) ? 'azzurro'
+        : /suon|music|audio/i.test(t) ? 'rosa'
+          : 'giallo';
   const pezzi = (v) => `<div class="novita-corpo">${v.pezzi.map((p) =>
     p.tipo === 'frase' ? `<p>${p.html}</p>`
-      : p.tipo === 'titoletto' ? `<h3>${p.html}</h3>`
+      : p.tipo === 'titoletto' ? `<h3 class="gruppo ${tipoGruppo(p.html)}">${p.html}</h3>`
         : `<ul>${p.voci.map((x) => `<li>${x}</li>`).join('')}</ul>`).join('')}</div>`;
-  const testaNovita = (v) => `<header class="novita-testa"><strong>Versione ${esc(v.numero)}</strong>${v.data ? `<time>${esc(v.data)}</time>` : ''}</header>`;
-  const ultima = novita[0];
-  const vecchie = novita.slice(1);
+  const quanti = (v) => v.pezzi.reduce((n, p) => n + (p.tipo === 'elenco' ? p.voci.length : 0), 0);
+
+  // registro delle versioni: una riga per versione, dalla più nuova alla prima
+  const registro = Object.assign({ titolo: 'Registro delle versioni', intro: '' }, ogg(s.registro));
+  const vocsRegistro = novita.map((v, i) => {
+    const n = quanti(v);
+    return `
+      <li class="registro-voce${i === 0 ? ' ultima' : ''}${v.importante ? ' importante' : ''}">
+        <details${i === 0 ? ' open' : ''}>
+          <summary>
+            <span class="registro-numero">v${esc(v.numero)}</span>
+            <span class="registro-testa">
+              ${v.importante ? '<span class="registro-importante">★ Aggiornamento importante</span>' : ''}
+              <strong>${esc(v.titolo || (i === novita.length - 1 ? 'Prima uscita' : 'Aggiornamento'))}</strong>
+              <small>${[v.data ? esc(v.data) : '', n ? `${n} ${n === 1 ? 'cambiamento' : 'cambiamenti'}` : ''].filter(Boolean).join(' · ')}</small>
+            </span>
+            ${i === 0 ? '<span class="registro-nuovo">Ultima</span>' : ''}
+            <span class="registro-freccia" aria-hidden="true"></span>
+          </summary>
+          ${v.pezzi.length ? pezzi(v) : '<div class="novita-corpo"><p>Nessun dettaglio.</p></div>'}
+        </details>
+      </li>`;
+  }).join('');
 
   const immagini = lista(galleria.immagini);
 
@@ -259,18 +321,14 @@
         </aside>
       </section>
 
-      ${ultima ? `
+      ${novita.length ? `
       <section class="sezione" id="novita" aria-labelledby="novita-titolo">
-        <h2 class="sezione-titolo" id="novita-titolo"><span>Novità</span></h2>
-        <article class="vignetta novita-ultima">
-          <span class="boom-nuovo" aria-hidden="true">NUOVO!</span>
-          ${testaNovita(ultima)}${pezzi(ultima)}
-        </article>
-        ${vecchie.length ? `
-        <details class="archivio">
-          <summary>Versioni precedenti (${vecchie.length})</summary>
-          ${vecchie.map((v) => `<article class="vignetta novita-vecchia">${testaNovita(v)}${pezzi(v)}</article>`).join('')}
-        </details>` : ''}
+        <div class="registro-intesta">
+          <h2 class="sezione-titolo" id="novita-titolo"><span>${esc(registro.titolo)}</span></h2>
+          ${novita.length > 1 ? '<button type="button" class="pillola" data-registro-tutte>Apri tutte</button>' : ''}
+        </div>
+        ${registro.intro ? `<p class="registro-intro">${esc(registro.intro)}</p>` : ''}
+        <ol class="registro">${vocsRegistro}</ol>
       </section>` : ''}
 
       ${immagini.length ? `
@@ -411,6 +469,12 @@
     else if (t.matches('[data-chiudi]')) dialogo.close();
     else if (t.matches('[data-scheda]')) scheda(t.dataset.scheda);
     else if (t.matches('[data-chiudi-notifica]')) chiudiNotifica();
+    else if (t.matches('[data-registro-tutte]')) {
+      const voci = document.querySelectorAll('.registro details');
+      const apri = [...voci].some((x) => !x.open);
+      voci.forEach((x) => { x.open = apri; });
+      aggiornaTutte();
+    }
     else if (t.matches('[data-copia]')) {
       navigator.clipboard && navigator.clipboard.writeText(guidaMac.comando).then(() => {
         t.innerHTML = `${ICONA.spunta} Copiato`;
@@ -433,5 +497,15 @@
     }
   });
 
+  // il pulsante dice "Apri tutte" o "Chiudi tutte" secondo come sono le versioni
+  function aggiornaTutte() {
+    const b = $('[data-registro-tutte]');
+    if (!b) return;
+    const tutteAperte = [...document.querySelectorAll('.registro details')].every((x) => x.open);
+    b.textContent = tutteAperte ? 'Chiudi tutte' : 'Apri tutte';
+  }
+  document.querySelectorAll('.registro details').forEach((x) => x.addEventListener('toggle', aggiornaTutte));
+
   aggiorna();
+  aggiornaTutte();
 })();

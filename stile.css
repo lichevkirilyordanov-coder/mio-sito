@@ -433,24 +433,24 @@ main { width: min(1180px, 100%); margin: 0 auto; padding: 0 clamp(16px, 4vw, 40p
   clip-path: polygon(0 12%, 8% 0, 22% 10%, 36% 0, 50% 9%, 64% 0, 78% 10%, 92% 0, 100% 14%, 94% 50%, 100% 86%, 90% 100%, 76% 90%, 62% 100%, 50% 91%, 36% 100%, 22% 90%, 8% 100%, 0 88%, 6% 50%);
   transform: rotate(6deg);
 }
-.novita-testa { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 10px; }
-.novita-testa strong { font: 900 clamp(22px, 2.4vw, 28px)/1.1 'Outfit', sans-serif; }
-.novita-testa time {
-  padding: 3px 10px;
-  background: var(--notte);
-  color: var(--giallo);
-  border-radius: 999px;
-  font: 800 13px/1.3 'Outfit', sans-serif;
-}
 .novita-corpo { font-size: 16px; line-height: 1.55; }
 .novita-corpo p { margin: 0 0 12px; max-width: 70ch; }
 .novita-corpo h3 {
-  margin: 18px 0 8px;
-  font: 900 14px/1.2 'Outfit', sans-serif;
-  letter-spacing: 2px;
+  display: inline-block;
+  margin: 16px 0 10px;
+  padding: 3px 10px;
+  background: var(--giallo);
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 8px;
+  font: 900 12px/1.2 'Outfit', sans-serif;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #4a3aa8;
 }
+.novita-corpo h3:first-child { margin-top: 0; }
+.novita-corpo h3.rosso { background: #ffb3b3; }
+.novita-corpo h3.azzurro { background: var(--azzurro); }
+.novita-corpo h3.rosa { background: var(--rosa); }
 .novita-corpo ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 8px 32px; }
 .novita-corpo li { position: relative; padding-left: 26px; }
 .novita-corpo li::before {
@@ -468,25 +468,125 @@ main { width: min(1180px, 100%); margin: 0 auto; padding: 0 clamp(16px, 4vw, 40p
 .novita-corpo code { padding: 1px 6px; background: rgba(0, 0, 0, 0.08); border-radius: 6px; }
 .novita-corpo a { color: #4a3aa8; font-weight: 800; }
 
-.archivio { margin-top: 26px; }
-.archivio summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 16px;
+
+/* registro delle versioni: una linea del tempo, dalla più nuova alla prima */
+.registro-intesta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; margin-bottom: 28px; }
+.registro-intesta .sezione-titolo { margin: 0; }
+.registro-intro { margin: -12px 0 24px; max-width: 70ch; color: rgba(255, 255, 255, 0.78); font-size: 16px; }
+.registro { position: relative; list-style: none; margin: 0; padding: 0 0 0 34px; display: grid; gap: 16px; }
+/* la linea */
+.registro::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 18px;
+  bottom: 18px;
+  width: 4px;
+  background: repeating-linear-gradient(180deg, var(--giallo) 0 10px, transparent 10px 18px);
+  border-radius: 4px;
+}
+.registro-voce { position: relative; }
+/* il pallino di ogni versione */
+.registro-voce::before {
+  content: '';
+  position: absolute;
+  left: -33px;
+  top: 22px;
+  width: 18px;
+  height: 18px;
   background: var(--notte-3);
   border: 3px solid #000;
-  border-radius: 999px;
-  box-shadow: 3px 3px 0 #000;
-  font-weight: 800;
+  border-radius: 50%;
+  box-shadow: 2px 2px 0 #000;
+}
+.registro-voce.ultima::before { background: var(--giallo); animation: pallino 1.6s ease-in-out infinite; }
+@keyframes pallino { 50% { box-shadow: 2px 2px 0 #000, 0 0 0 7px rgba(255, 230, 109, 0.25); } }
+.registro details {
+  background: var(--notte);
+  border: 4px solid #000;
+  border-radius: 16px;
+  box-shadow: var(--ombra);
+  overflow: hidden;
+}
+.registro details[open] { background: var(--carta); color: #1b1b24; }
+.registro summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
   cursor: pointer;
   list-style: none;
 }
-.archivio summary::-webkit-details-marker { display: none; }
-.archivio summary::before { content: '▸'; transition: transform 0.15s ease; }
-.archivio[open] summary::before { transform: rotate(90deg); }
-.archivio[open] summary { margin-bottom: 22px; }
-.novita-vecchia { margin-bottom: 20px; background: #e9e4cc; box-shadow: var(--ombra); }
+.registro summary::-webkit-details-marker { display: none; }
+.registro summary:hover .registro-freccia { transform: translateX(3px); }
+.registro details[open] summary { border-bottom: 3px dashed rgba(0, 0, 0, 0.18); }
+.registro details[open] summary:hover .registro-freccia { transform: rotate(90deg); }
+.registro-numero {
+  flex: none;
+  min-width: 74px;
+  padding: 6px 10px;
+  background: var(--giallo);
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 #000;
+  font: 900 16px/1.1 'Outfit', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+.registro-testa { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.registro-testa strong { font: 900 clamp(17px, 1.7vw, 20px)/1.2 'Outfit', sans-serif; }
+.registro-testa small { font: 700 13px/1.3 'Outfit', sans-serif; opacity: 0.7; }
+.registro-importante {
+  align-self: flex-start;
+  margin-bottom: 3px;
+  padding: 4px 12px;
+  background: var(--giallo);
+  color: #000;
+  font: 900 11px/1.2 'Outfit', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  clip-path: polygon(0 12%, 8% 0, 22% 10%, 36% 0, 50% 9%, 64% 0, 78% 10%, 92% 0, 100% 14%, 94% 50%, 100% 86%, 90% 100%, 76% 90%, 62% 100%, 50% 91%, 36% 100%, 22% 90%, 8% 100%, 0 88%, 6% 50%);
+  transform: rotate(-2deg);
+}
+.registro-voce.importante details { border-color: #000; box-shadow: 6px 6px 0 var(--giallo), 6px 6px 0 2px #000; }
+/* il pallino delle versioni importanti diventa una stella */
+.registro-voce.importante::before {
+  left: -37px;
+  top: 16px;
+  width: 26px;
+  height: 26px;
+  background: var(--giallo);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  filter: drop-shadow(0 0 0 #000);
+}
+.registro-voce.importante.ultima::before { animation: none; }
+.registro-nuovo {
+  flex: none;
+  padding: 4px 10px;
+  background: var(--rosa);
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 999px;
+  font: 900 12px/1.2 'Outfit', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.registro-freccia {
+  flex: none;
+  width: 0;
+  height: 0;
+  border-left: 9px solid currentColor;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  transition: transform 0.15s ease;
+}
+.registro details[open] .registro-freccia { transform: rotate(90deg); }
+.registro .novita-corpo { padding: 16px 20px 18px; }
+.registro .novita-corpo ul { grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); }
 
 /* galleria a polaroid */
 .galleria {
@@ -723,6 +823,13 @@ kbd {
   .piede { flex-direction: column; align-items: flex-start; }
   .piede-tasti { display: none; }
   .comandi li { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .registro { padding-left: 26px; }
+  .registro::before { left: 5px; }
+  .registro-voce::before { left: -27px; width: 16px; height: 16px; }
+  .registro-voce.importante::before { left: -31px; width: 24px; height: 24px; }
+  .registro summary { flex-wrap: wrap; gap: 8px 12px; padding: 10px 12px; }
+  .registro-numero { min-width: 0; font-size: 14px; }
+  .registro .novita-corpo { padding: 14px; }
 }
 @media (hover: none) { .piede-tasti { display: none; } }
 

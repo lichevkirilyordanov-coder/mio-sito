@@ -13,7 +13,7 @@ il vicolo sotto la pioggia e l'insegna al neon della sigla.
 | File | A cosa serve |
 |---|---|
 | `contenuti/testi.js` | ✏️ **Tutti i testi**: titolo, battute a fumetto, **link di download** e peso degli zip, galleria, guide per Mac e Windows, comandi, note, piè di pagina. |
-| `contenuti/novita.js` | ✏️ **Le novità di ogni versione** (in Markdown). La più in alto è quella attuale: il suo numero compare da solo nella barra in alto. |
+| `contenuti/novita.js` | ✏️ **Le novità di ogni versione** (in Markdown). Sul sito diventano il **Registro delle versioni**: una riga per versione, dalla più nuova alla prima, che si apre con un clic. La più recente è l'attuale e compare nella barra in alto. |
 | `immagini/` | Le foto della galleria (e `vicolo.webp`, che è anche lo sfondo della pagina). |
 | `index.html`, `stile.css`, `sito.js`, `favicon.svg` | La pagina, il suo aspetto e il "motore". Di solito non si toccano. |
 
@@ -31,15 +31,21 @@ il vicolo sotto la pioggia e l'insegna al neon della sigla.
 In `contenuti/novita.js` aggiungi **in cima** (subito sotto ``window.NOVITA = ` ``):
 
 ```md
-## 0.0.2 · 25 ottobre 2026
+## 0.0.2 · 25 ottobre 2026 · Aggiornamento grafico
 
-Una frase per raccontare l'aggiornamento.
+Una frase per raccontare l'aggiornamento (facoltativa).
 
-- Prima novità
-- Seconda novità
+### Grafica
+- Menù nuovo
+
+### Correzioni
+- Corretto un errore nel Taccuino
 ```
 
-Le versioni vecchie restano sotto, in "Versioni precedenti". Se cambia il peso degli zip,
+La riga con `##` è numero · data · titolo breve. I titoletti `###` diventano etichette colorate
+(Novità gialla, Grafica/UI azzurra, Correzioni/Bug rossa, Audio rosa). Se una versione ha tante novità, aggiungi
+`· importante` alla fine della riga `##`: compare l'etichetta **★ Aggiornamento importante** e una stella. Le versioni vecchie restano
+sotto, chiuse: il sito le mette in ordine da solo in base alla data (o al numero, se una data manca). Se cambia il peso degli zip,
 aggiornalo in `contenuti/testi.js` (`peso:`).
 
 ### Se qualcosa va storto

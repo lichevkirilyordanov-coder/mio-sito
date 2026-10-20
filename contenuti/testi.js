@@ -67,6 +67,12 @@ download:
   dopo_il_clic: Il download è partito! Apri lo zip e segui la guida se il computer fa storie.
 
 
+# --- Registro delle versioni (le versioni stanno in contenuti/novita.js) ---
+registro:
+  titolo: Registro delle versioni
+  intro: Tutti gli aggiornamenti del gioco, dal più nuovo al primo. Clicca una versione per vedere cosa è cambiato.
+
+
 # --- Galleria (foto nella cartella immagini/) --------------------
 # Per aggiungere un'immagine: caricala nella cartella immagini/ e aggiungi
 # due righe qui sotto, come le altre.
