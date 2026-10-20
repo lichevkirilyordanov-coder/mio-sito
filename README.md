@@ -1,44 +1,51 @@
 # I Casi del Garage — Sito per scaricare il gioco
 
 Il sito ufficiale di **I Casi del Garage**, il videogioco noir comico di **Kannella Studio**.
-Ha lo stesso stile del gioco: fumetto con l'inchiostro nero, giallo `#ffe66d`, blu notte
-`#1a1a2e`, carattere Outfit, il vicolo sotto la pioggia e l'insegna al neon della sigla.
+Ha lo stesso stile del gioco: fumetto con l'inchiostro nero, giallo, blu notte, carattere Outfit,
+il vicolo sotto la pioggia e l'insegna al neon della sigla.
+
+**Non serve installare niente:** sul computer basta un doppio clic su `index.html`.
 
 ---
 
-## ✏️ Cambiare i testi (anche dal sito di GitHub)
+## 📁 Cosa c'è
 
-Tutto quello che si legge sul sito sta in **due file**, nella cartella [`contenuti/`](./contenuti):
-
-| File | Cosa c'è dentro |
+| File | A cosa serve |
 |---|---|
-| [`contenuti/NOVITA.md`](./contenuti/NOVITA.md) | **Le novità di ogni versione.** La versione più in alto è quella attuale: il suo numero compare da solo nella barra in alto e nel riquadro "Novità". |
-| [`contenuti/sito.yml`](./contenuti/sito.yml) | Tutti gli altri testi: titolo, battute a fumetto, **link di download** e peso degli zip, galleria, guide per Mac e Windows, comandi del gioco, note, piè di pagina. |
+| `contenuti/testi.js` | ✏️ **Tutti i testi**: titolo, battute a fumetto, **link di download** e peso degli zip, galleria, guide per Mac e Windows, comandi, note, piè di pagina. |
+| `contenuti/novita.js` | ✏️ **Le novità di ogni versione** (in Markdown). La più in alto è quella attuale: il suo numero compare da solo nella barra in alto. |
+| `immagini/` | Le foto della galleria (e `vicolo.webp`, che è anche lo sfondo della pagina). |
+| `index.html`, `stile.css`, `sito.js`, `favicon.svg` | La pagina, il suo aspetto e il "motore". Di solito non si toccano. |
 
-**Dal sito di GitHub:**
-1. Apri il file (es. `contenuti/NOVITA.md`) e premi la **matita ✏️** in alto a destra.
-2. Scrivi le modifiche (in cima a ogni file c'è un promemoria con le regole).
+---
+
+## ✏️ Cambiare i testi dal sito di GitHub
+
+1. Apri il file (es. `contenuti/novita.js`) e premi la **matita ✏️** in alto a destra.
+2. Scrivi le modifiche: in cima a ogni file c'è un promemoria con le regole.
+   Scrivi solo tra la riga ``window.TESTI = ` `` (o ``window.NOVITA = ` ``) e la riga `` `; `` in fondo.
 3. Premi **Commit changes…** e poi di nuovo **Commit changes**.
-4. Dopo un paio di minuti il sito è aggiornato da solo.
-   Lo vedi nella scheda **Actions**: pallino verde ✅ = pubblicato.
+4. Dopo circa un minuto il sito è aggiornato.
 
-### Nuova versione del gioco: cosa fare
-1. In `contenuti/NOVITA.md` aggiungi **in cima** (sotto il promemoria):
-   ```md
-   ## 0.0.2 · 25 ottobre 2026
+### Nuova versione del gioco
+In `contenuti/novita.js` aggiungi **in cima** (subito sotto ``window.NOVITA = ` ``):
 
-   Una frase per raccontare l'aggiornamento.
+```md
+## 0.0.2 · 25 ottobre 2026
 
-   - Prima novità
-   - Seconda novità
-   ```
-   Le versioni vecchie restano sotto, in "Versioni precedenti".
-2. Se cambia il peso degli zip, aggiornalo in `contenuti/sito.yml` (`peso:`).
+Una frase per raccontare l'aggiornamento.
+
+- Prima novità
+- Seconda novità
+```
+
+Le versioni vecchie restano sotto, in "Versioni precedenti". Se cambia il peso degli zip,
+aggiornalo in `contenuti/testi.js` (`peso:`).
 
 ### Se qualcosa va storto
-Se in `sito.yml` manca uno spazio o ci sono i due punti `:` in una frase senza virgolette,
-il sito **non si rompe**: resta quello di prima. Nella scheda **Actions** compare una ❌ e,
-aprendola, un messaggio in italiano dice **in che riga** è l'errore.
+Se un testo è scritto male (per esempio mancano degli spazi all'inizio di una riga), il sito
+non si rompe in silenzio: mostra un fumetto **"OPS!"** che dice in quale file è l'errore e quale
+riga controllare. Prima di caricare, puoi sempre provare con un doppio clic su `index.html`.
 
 ---
 
@@ -46,50 +53,22 @@ aprendola, un messaggio in italiano dice **in che riga** è l'errore.
 
 1. Su GitHub, nella colonna di destra: **Releases** → **Draft a new release**.
 2. Scrivi la versione (es. `v0.0.2`) e trascina i due zip, **sempre con lo stesso nome**, ad esempio
-   `I-Casi-del-Garage-Mac.zip` e `I-Casi-del-Garage-Windows.zip` (meglio senza spazi:
-   GitHub li cambierebbe in puntini).
+   `I-Casi-del-Garage-Mac.zip` e `I-Casi-del-Garage-Windows.zip` (meglio senza spazi).
 3. **Publish release**.
-4. In `contenuti/sito.yml` metti come `link:` un indirizzo così:
+4. In `contenuti/testi.js` metti come `link:` un indirizzo così:
    ```
-   https://github.com/TUO-NOME/TUO-REPO/releases/latest/download/I-Casi-del-Garage-Mac.zip
+   https://github.com/lichevkirilyordanov-coder/mio-sito/releases/latest/download/I-Casi-del-Garage-Mac.zip
    ```
    Con `latest` il link porta sempre all'ultima release: **lo scrivi una volta sola**.
 
-Finché un link è `"#"` il pulsante resta grigio e dice "in arrivo".
+Finché un link è `#` il pulsante resta grigio e dice "in arrivo".
 
 ---
 
-## 🖼 Galleria
+## 🌐 Pubblicazione (GitHub Pages)
 
-Le immagini stanno in [`public/immagini/`](./public/immagini) (oggi sono gli sfondi del gioco).
-Per aggiungerne una: su GitHub apri la cartella → **Add file → Upload files**, poi in
-`contenuti/sito.yml`, sotto `galleria:`, aggiungi due righe come le altre (`file:` e `didascalia:`).
-L'immagine del vicolo (`vicolo.webp`) è anche lo sfondo di tutta la pagina.
+**Settings → Pages → Build and deployment → Source: "Deploy from a branch"**, ramo `main`, cartella `/ (root)`.
+Così ogni modifica (fatta dall'editor di GitHub o caricando i file) va online da sola.
 
----
-
-## 💻 Provarlo sul computer
-
-Sul computer questa cartella ("File per GitHub") contiene **solo** i file del sito che vanno su GitHub.
-I pacchetti per farlo girare (`node_modules`) stanno nella cartella sopra, così qui non c'è niente in più.
-
-```bash
-npm run dev
-```
-
-Se i pacchetti mancano, `npm install` qui dentro li rimette (git li ignora, non finiscono su GitHub).
-
-Poi apri l'indirizzo che compare (di solito `http://localhost:5173`).
-
-## 🌐 Pubblicazione su GitHub Pages
-
-C'è già `.github/workflows/deploy.yml`: a ogni modifica sul ramo `main` (anche fatta dal sito di GitHub)
-il sito viene ricostruito e pubblicato. La prima volta: **Settings → Pages → Source: GitHub Actions**.
-
-## Come è fatto (per chi programma)
-
-React + Vite + TypeScript, CSS normale in `src/index.css` (niente Tailwind).
-`vite.config.ts` trasforma `contenuti/sito.yml` in dati (con l'errore in italiano) e mette
-titolo e descrizione della pagina in `index.html`; `src/contenuti.ts` legge `NOVITA.md`
-(titoli `##` = versioni, `###` = gruppi, `-` = punti, **grassetto**, *corsivo*, [link](https://…)).
-Tasti: ← → scelgono la versione, Invio scarica.
+Per caricare i file a mano: **Add file → Upload files** e trascina il **contenuto** della cartella
+(`index.html`, `stile.css`, `sito.js`, `favicon.svg` e le cartelle `contenuti` e `immagini`).

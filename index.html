@@ -2,23 +2,38 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1a1a2e" />
-    <!-- titolo e descrizione si cambiano in contenuti/sito.yml -->
-    <title>%TITOLO%</title>
-    <meta name="description" content="%DESCRIZIONE%" />
-    <meta property="og:title" content="%TITOLO%" />
-    <meta property="og:description" content="%DESCRIZIONE%" />
-    <meta property="og:image" content="./immagini/vicolo.webp" />
+    <title>I Casi del Garage — Scarica il gioco</title>
+    <meta name="description" content="Il videogioco noir comico di Kannella Studio. Scaricalo gratis per Mac e Windows." />
+    <meta property="og:title" content="I Casi del Garage — Scarica il gioco" />
+    <meta property="og:description" content="Il videogioco noir comico di Kannella Studio. Scaricalo gratis per Mac e Windows." />
+    <meta property="og:image" content="immagini/vicolo.webp" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
     <!-- Outfit: lo stesso carattere del gioco -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="stile.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!--
+      Questa pagina si riempie da sola con i testi di:
+        contenuti/testi.js   → titolo, download, galleria, aiuto...
+        contenuti/novita.js  → le novità di ogni versione
+      Qui non serve cambiare niente.
+    -->
+    <div class="scena" aria-hidden="true">
+      <div class="scena-sfondo"></div>
+      <div class="scena-pioggia"></div>
+      <div class="scena-lampo"></div>
+      <div class="scena-retino"></div>
+    </div>
+    <div id="sito"></div>
+
+    <script src="contenuti/testi.js"></script>
+    <script src="contenuti/novita.js"></script>
+    <script src="sito.js"></script>
   </body>
 </html>

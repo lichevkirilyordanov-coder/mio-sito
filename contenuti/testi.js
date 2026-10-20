@@ -1,0 +1,132 @@
+/* =====================================================================
+   TESTI DEL SITO — I Casi del Garage
+   ---------------------------------------------------------------------
+   Si modifica anche dall'editor di GitHub (icona della matita ✏️),
+   poi "Commit changes": dopo un minuto il sito è aggiornato.
+
+   Regole semplici:
+    • scrivi solo tra la riga  window.TESTI = `  e la riga  `;  in fondo
+    • cambia il testo DOPO i due punti, non le parole a sinistra
+    • lascia gli spazi all'inizio delle righe come sono
+    • non usare il carattere  `  (accento grave) nei testi
+    • le righe che iniziano con "#" sono note per te: il sito le ignora
+
+   Le NOVITÀ DELLE VERSIONI non stanno qui: sono in  contenuti/novita.js
+   (il numero della versione viene preso da lì, in automatico).
+   ===================================================================== */
+
+window.TESTI = `
+
+# --- Scheda del browser e anteprima nei link condivisi ---------------
+titolo_pagina: I Casi del Garage — Scarica il gioco
+descrizione: Il videogioco noir comico di Kannella Studio. Scaricalo gratis per Mac e Windows.
+
+
+# --- La parte in alto: titolo del gioco ------------------------------
+titolo:
+  etichetta: I CASI
+  nome: DEL GARAGE
+  sottotitolo: Un'avventura noir un po' prevedibile
+  frase: Ogni garage nasconde un segreto. Questo ha deciso di chiamarti.
+
+# Le tre battute a fumetto (come nella sigla del gioco).
+# "colore" può essere: giallo, rosa, azzurro, viola, arancio
+battute:
+  - scritta: SPLASH!
+    testo: Ogni notte un guaio.
+    colore: giallo
+  - scritta: BZZZT!
+    testo: Ogni amico un sospettato.
+    colore: rosa
+  - scritta: DRIIIN!
+    testo: E nessuno dorme.
+    colore: azzurro
+
+
+# --- Il riquadro per scaricare ---------------------------------------
+download:
+  titolo: Scegli la tua versione
+  sopra_titolo: Fascicolo riservato
+  pulsante: Scarica per          # diventa "Scarica per macOS" / "Scarica per Windows"
+  nota_pulsante: Gratis, senza registrazione
+  # Se un link è "#" il pulsante dice che la versione è in arrivo.
+  # Trucco: carica gli zip su GitHub → Releases sempre con lo stesso nome
+  # (es. I-Casi-del-Garage-Mac.zip) e usa un link così, che punta sempre
+  # all'ultima versione e non va mai cambiato:
+  #   https://github.com/TUO-NOME/TUO-REPO/releases/latest/download/I-Casi-del-Garage-Mac.zip
+  mac:
+    nome: macOS
+    dettagli: macOS 12 o successivo · Intel e Apple Silicon
+    peso: 228 MB
+    link: "#"
+  windows:
+    nome: Windows
+    dettagli: Windows 10 e 11 · 64 bit
+    peso: 101 MB
+    link: "#"
+  dopo_il_clic: Il download è partito! Apri lo zip e segui la guida se il computer fa storie.
+
+
+# --- Galleria (foto nella cartella immagini/) --------------------
+# Per aggiungere un'immagine: caricala nella cartella immagini/ e aggiungi
+# due righe qui sotto, come le altre.
+galleria:
+  titolo: Dalla scena del crimine
+  immagini:
+    - file: ufficio.webp
+      didascalia: L'ufficio
+    - file: vicolo.webp
+      didascalia: Il vicolo
+    - file: auto.webp
+      didascalia: L'auto sospetta
+    - file: bar-garage.webp
+      didascalia: Il Bar Garage
+
+
+# --- Finestra "Aiuto" --------------------------------------------------
+guida_mac:
+  avviso: Il gioco non viene dall'App Store, quindi la prima volta il Mac lo blocca. È normale: basta dirgli che ti fidi.
+  passi:
+    - Apri lo zip scaricato con un doppio clic.
+    - Trascina "I Casi del Garage" nella cartella Applicazioni.
+    - Fai doppio clic sul gioco. Se il Mac lo blocca, premi "Fine".
+    - Apri Impostazioni di Sistema → Privacy e sicurezza, scorri in basso e premi "Apri comunque".
+    - Dalla volta dopo si apre con un doppio clic, come tutte le app.
+  se_danneggiata: Se il Mac dice che l'app "è danneggiata", apri l'app Terminale e incolla questo comando
+  comando: xattr -cr "/Applications/I Casi del Garage.app"
+
+guida_windows:
+  avviso: La prima volta Windows potrebbe mostrare una finestra blu (SmartScreen). È normale per i giochi fatti in casa.
+  passi:
+    - Fai clic destro sullo zip scaricato e scegli "Estrai tutto…".
+    - Apri la cartella estratta e fai doppio clic su "I Casi del Garage".
+    - Se compare la finestra blu, premi "Ulteriori informazioni" e poi "Esegui comunque".
+
+comandi:
+  - tasto: Spazio
+    azione: Fa avanzare il dialogo
+  - tasto: 1 – 9
+    azione: Sceglie una risposta
+  - tasto: I
+    azione: Ispeziona la scena con la lente
+  - tasto: F
+    azione: Fiuto (mentre ispezioni)
+  - tasto: N
+    azione: Apre il Taccuino (Q ed E per cambiare scheda)
+  - tasto: M
+    azione: Apre la mappa dei luoghi
+  - tasto: Esc
+    azione: Pausa e menù
+
+note:
+  - I Casi del Garage è un gioco di Kannella Studio, fatto per gli amici e con gli amici.
+  - Il gioco funziona sul tuo computer, non raccoglie dati e non ha pubblicità. I salvataggi restano sul tuo computer anche quando aggiorni il gioco.
+  - Hai trovato un errore o hai un'idea per il prossimo caso? Scrivi a Kannella Studio.
+
+
+# --- In fondo alla pagina ----------------------------------------------
+piede:
+  studio: Kannella Studio
+  frase: Prodotto di notte, come le indagini migliori.
+
+`;
