@@ -29,15 +29,29 @@
 
 window.NOVITA = `
 
-## 0.0.2 · 25 ottobre 2026 · Bacheca dei casi e impostazioni nuove · importante
+## 0.0.2 · 21 ottobre 2026 · Musica, menù e impostazioni · importante
 
 ### Grafica
 - Nuova grafica dalla Home alla bacheca dei casi: ogni caso è una cartellina appesa al sughero
 - Si passa da un caso all'altro con un movimento morbido, senza ridisegnare tutto
+- Rivisto completamente il sistema dei dialoghi, con nuove aggiunte grafiche, piccole animazioni e nuova visualizzazione dei ritratti dei personaggi e dei fumetti.
 
 ### Novità
-- Impostazioni nuove, divise in schede: Audio, Grafica, Testo e Accesso
+- Impostazioni nuove
 - Nuove opzioni: voce dei personaggi, commenti in scena, lente da detective, comandi a schermo
+- Menù di pausa aggiornato, con le opzioni per continuare, salvare, caricare e uscire
+- Nuovo sistema di salvataggio: puoi salvare in qualsiasi scena, anche più volte, e caricare da qualsiasi punto del gioco
+- Riscritto completamente il motore audio, riviste le impostazioni
+- Riviste tutte le musiche e gli effetti sonori, con nuove tracce e nuovi suoni
+
+### Correzioni
+- Risolto un bug che faceva sparire la lente da detective in alcune scene
+- Risolto un bug che faceva sparire il tasto "Fiuto" in alcune scene
+- Risolto un bug che faceva sparire il tasto "Indietro" in alcune scene
+- Risolto un bug che non rindirizzava l'utente alla schermata iniziale dal menù di pausa
+- Risolto un bug che non permetteva di salvare il gioco in alcune scene
+- Risolto un bug che sovvraponeva la musica di sottofondo in alcune scene
+- Tutti i flussi audio ora funzionano correttamente
 
 ## 0.0.1 beta · 19 ottobre 2026 · Prima uscita
 
