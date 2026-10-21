@@ -26,7 +26,7 @@ titolo:
   etichetta: I CASI
   nome: DEL GARAGE
   sottotitolo: Un'avventura noir un po' prevedibile
-  frase: Ogni garage nasconde un segreto. Questo ha deciso di chiamarti.
+  frase: Ogni garage nasconde un segreto...
 
 # Le tre battute a fumetto (come nella sigla del gioco).
 # "colore" può essere: giallo, rosa, azzurro, viola, arancio
@@ -38,7 +38,7 @@ battute:
     testo: Ogni amico un sospettato.
     colore: rosa
   - scritta: DRIIIN!
-    testo: E nessuno dorme.
+    testo: E nessuno mangia pollo.
     colore: azzurro
 
 
@@ -47,7 +47,7 @@ download:
   titolo: Scegli la tua versione
   sopra_titolo: Fascicolo riservato
   pulsante: Scarica per          # diventa "Scarica per macOS" / "Scarica per Windows"
-  nota_pulsante: Gratis, senza registrazione
+  nota_pulsante: Gratis
   # Se un link è "#" il pulsante dice che la versione è in arrivo.
   # Trucco: carica gli zip su GitHub → Releases sempre con lo stesso nome
   # (es. I-Casi-del-Garage-Mac.zip) e usa un link così, che punta sempre
@@ -57,12 +57,12 @@ download:
     nome: macOS
     dettagli: macOS 12 o successivo · Intel e Apple Silicon
     peso: 228 MB
-    link: "#"
+    link: "https://github.com/lichevkirilyordanov-coder/mio-sito/releases/download/v0.0.2/I-Casi-del-Garage-Mac-21-10-2026.zip"
   windows:
     nome: Windows
     dettagli: Windows 10 e 11 · 64 bit
     peso: 101 MB
-    link: "#"
+    link: "https://github.com/lichevkirilyordanov-coder/mio-sito/releases/download/v0.0.2/I-Casi-del-Garage-Windows-21-10-2026.zip"
   dopo_il_clic: Il download è partito! Apri lo zip e segui la guida se il computer fa storie.
 
 
@@ -120,10 +120,10 @@ comandi:
 note:
   - I Casi del Garage è un gioco di Kannella Studio, fatto per gli amici e con gli amici.
   - Il gioco funziona sul tuo computer, non raccoglie dati e non ha pubblicità. I salvataggi restano sul tuo computer anche quando aggiorni il gioco.
-  - Hai trovato un errore o hai un'idea per il prossimo caso? Scrivi a Kannella Studio.
+  - Hai trovato un errore o hai un'idea per il prossimo caso? Scrivi a Kannella Studio (Kiril).
 
 
 # --- In fondo alla pagina ----------------------------------------------
 piede:
   studio: Kannella Studio
-  frase: Prodotto di notte, come le indagini migliori.
+  frase: Prodotto di notte, come le cose migliori.
