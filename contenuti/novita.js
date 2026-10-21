@@ -33,15 +33,15 @@ window.NOVITA = `
 
 ### Grafica
 - Nuova grafica dalla Home alla bacheca dei casi: ogni caso è una cartellina appesa al sughero
-- Si passa da un caso all'altro con un movimento morbido, senza ridisegnare tutto
+- Si passa da un caso all'altro con un movimento morbido
 - Rivisto completamente il sistema dei dialoghi, con nuove aggiunte grafiche, piccole animazioni e nuova visualizzazione dei ritratti dei personaggi e dei fumetti.
+- In prova: Nuova UI dei fascicoli (schermata salvataggi)
 
 ### Novità
 - Impostazioni nuove
-- Nuove opzioni: voce dei personaggi, commenti in scena, lente da detective, comandi a schermo
-- Menù di pausa aggiornato, con le opzioni per continuare, salvare, caricare e uscire
+- Menù di pausa aggiornato
 - Nuovo sistema di salvataggio: puoi salvare in qualsiasi scena, anche più volte, e caricare da qualsiasi punto del gioco
-- Riscritto completamente il motore audio, riviste le impostazioni
+- Riscritto completamente il motore audioe riviste le relative opzioni
 - Riviste tutte le musiche e gli effetti sonori, con nuove tracce e nuovi suoni
 
 ### Correzioni
@@ -51,6 +51,7 @@ window.NOVITA = `
 - Risolto un bug che non rindirizzava l'utente alla schermata iniziale dal menù di pausa
 - Risolto un bug che non permetteva di salvare il gioco in alcune scene
 - Risolto un bug che sovvraponeva la musica di sottofondo in alcune scene
+- Risolto bug che non permetteva l'utilizzo di molte voci relative al menù impostazioni
 - Tutti i flussi audio ora funzionano correttamente
 
 ## 0.0.1 beta · 19 ottobre 2026 · Prima uscita
@@ -74,7 +75,7 @@ La prima indagine è aperta: Federico Masia è stato trovato nel vicolo dietro i
 - La mappa ora ricorda anche il vicolo tra i luoghi visitati
 - Pulizia generale: tolte molte parti vecchie che non servivano più
 
-## 0.0.1 alpha 9 · 10 ottobre 2026 · Ufficio, bagno e mappa · importante
+## 0.0.1 alpha 9 · 10 ottobre 2026 · Ufficio, bagno e mappa
 
 ### Novità
 - Una scena tutta nuova, il bagno del Bar Garage, con un personaggio da scoprire
