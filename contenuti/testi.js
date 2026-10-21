@@ -58,12 +58,12 @@ download:
     nome: macOS
     dettagli: macOS 12 o successivo · Intel e Apple Silicon
     peso: 228 MB
-    link: "#"
+    link: "https://github.com/lichevkirilyordanov-coder/mio-sito/releases/download/v0.0.2/I-Casi-del-Garage-Mac-21-10-2026.zip"
   windows:
     nome: Windows
     dettagli: Windows 10 e 11 · 64 bit
     peso: 101 MB
-    link: "#"
+    link: "https://github.com/lichevkirilyordanov-coder/mio-sito/releases/download/v0.0.2/I-Casi-del-Garage-Windows-21-10-2026.zip"
   dopo_il_clic: Il download è partito! Apri lo zip e segui la guida se il computer fa storie.
 
 
