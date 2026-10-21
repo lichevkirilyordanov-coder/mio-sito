@@ -45,7 +45,6 @@ La prima indagine è aperta: Federico Masia è stato trovato nel vicolo dietro i
 
 ### Cosa trovi
 - **Il Caso Masia**, il primo caso de I Casi del Garage, giocabile dall'inizio alla fine
-- Sigla nuova firmata Kannella Studio
 - Ufficio da esplorare in due inquadrature: la scrivania e la stanza
 - La lente da detective per Ispezionare le scene, con il Fiuto (tasto F)
 - Indizi che finiscono nel Taccuino, con la bacheca per collegare le prove
@@ -61,7 +60,7 @@ La prima indagine è aperta: Federico Masia è stato trovato nel vicolo dietro i
 - La mappa ora ricorda anche il vicolo tra i luoghi visitati
 - Pulizia generale: tolte molte parti vecchie che non servivano più
 
-## 0.0.1 alpha 10 · 10 ottobre 2026 · Ufficio, bagno e mappa · importante
+## 0.0.1 alpha 9 · 10 ottobre 2026 · Ufficio, bagno e mappa · importante
 
 ### Novità
 - Una scena tutta nuova, il bagno del Bar Garage, con un personaggio da scoprire
@@ -79,59 +78,64 @@ La prima indagine è aperta: Federico Masia è stato trovato nel vicolo dietro i
 ### Gioco
 - Punti da ispezionare rivisti: ogni indizio sta su qualcosa che si vede nella scena
 
-## 0.0.1 alpha 9 · 4 ottobre 2026 · Il profilo dell'agente
+## 0.0.1 alpha 8 · 4 ottobre 2026 · Il profilo dell'agente
 
 ### Novità
 - Sistemate tutte le impostazioni del profilo
 - Profilo in tre passi: nome, volto e carattere dell'agente
 
-## 0.0.1 alpha 8 · 28 settembre 2026 · Il grande restyling a fumetto · importante
+## 0.0.1 alpha 6 · 15 settembre 2026 · Il grande restyling a fumetto · importante
 
 ### Grafica
 - Nuovo stile a fumetto in tutto il gioco: inchiostro nero, colori pieni, angoli arrotondati
-- Il gioco riempie tutta la finestra
+- Nuova schermata iniziale con il logo del gioco e le opzioni per iniziare, continuare o uscire
+- Nuova interfaccia per i dialoghi e le scelte di risposta, con i tasti numerici e le frecce per navigare tra le opzioni
+- Il gioco riempie tutta la finestra, prima veniva ridotto a un riquadro
 - Dialoghi su un palco: il personaggio grande, il fumetto e le risposte numerate (tasti 1–9)
-- Ispeziona diventa una lente da detective, con i luccichii e il Fiuto
+- Ispeziona diventa una lente da detective, con i luccichii e il nuovo tasto "Fiuto"
 - Uscite con i cartelli e una vignetta che accompagna il passaggio da un luogo all'altro
-- Pioggia, luci e nebbia nelle scene
-- La telefonata di Davide diventa una scena da film
+- Pioggia, luci e nebbia nelle scene ridisegnate per un effetto più immersivo
+- La telefonata di Davide acquisisce un nuovo look! Adesso potrai immedesimarti meglio nel personaggio e nelle sue scelte
+- Alcuni luoghi sono stati ridisegnati e ripensati
 
 ### Novità
-- Dialoghi riscritti da capo, con i personaggi veri e un tono noir comico
-- Al Bar Garage Martina e Marco compaiono come fumetti da cliccare
-- Il Taccuino si apre da destra e ha la bacheca dell'indagine, con il filo rosso tra le prove
-- Una guida passo passo per la prima partita
-- Le voci dei personaggi sono bip da fumetto
+- Dialoghi riscritti da capo, con riferimenti al gruppo Garage e un tono noir comico
+- Al Bar Garage Martina e Marco compaiono come fumetti da cliccare e non più come scelte di dialogo che interrompono la scena
+- Il Taccuino ha una grafica completamente rinnovata: si apre da destra e ha la bacheca dell'indagine, con il filo rosso tra le prove
+- Introdotta una guida passo passo per la prima partita, con la spiegazione dei comandi e delle meccaniche di gioco
 - Il gioco diventa un'app vera per Mac e Windows
 
 ### Gioco
 - Alcune meccaniche riviste per rendere il gioco più piacevole
 - Finestre e avvisi (pop-up) rifatti, più chiari e meno invadenti
 
-## 0.0.1 alpha 7 · 20 settembre 2026 · La Home rivista
-
-### Grafica
-- Nuova interfaccia della Home, rivista da cima a fondo
-- Nuovi avatar per l'agente
-
-## 0.0.1 alpha 6 · agosto 2026 · Caccia ai bug
+## 0.0.1 alpha 5 · agosto 2026 · Caccia ai bug
 
 ### Correzioni
 - Sistemati molti bug trovati giocando
 
-## 0.0.1 alpha 5 · luglio 2026 · L'intro e i dialoghi nuovi
+## 0.0.1 alpha 4 · luglio 2026 · L'intro e i dialoghi nuovi
 
 ### Novità
 - L'intro del gioco
 - Dialoghi riscritti per adattarsi alla storia
+- Nuova schermata iniziale con la scrivania dell'agente
+- Nuova schermata di caricamento con il logo del gioco
+- Nuova schermata creazione del profilo dell'agente, con il nome e il volto
+- Nuova schermata delle impostazioni, con le opzioni per la musica, gli effetti sonori e il volume
+- Nuova schermata di pausa, con le opzioni per continuare, salvare, caricare e uscire
+- Nuove descrizioni per gli oggetti da ispezionare e per i personaggi
 
 ### Grafica
 - Animazioni più fluide
+- Nuovi sfondi per l'ufficio dell'agente e il Bar Garage
+- Nuovi ritratti dei personaggi
+- Inseriti placeholder per gli indizi scovati lungo il gioco, che compariranno nel Taccuino (verranno rivisitati)
 
 ### Correzioni
 - Il tasto Indietro ora funziona
 
-## 0.0.1 alpha 4 · 16 giugno 2026 · Telefonata e Taccuino
+## 0.0.1 alpha 3 · 16 giugno 2026 · Telefonata e Taccuino
 
 ### Novità
 - La telefonata di Davide sul telefono, con le scelte di risposta
@@ -141,37 +145,39 @@ La prima indagine è aperta: Federico Masia è stato trovato nel vicolo dietro i
 ### Correzioni
 - Prime prove automatiche del gioco, per scovare gli errori prima di giocare
 
-## 0.0.1 alpha 3 · 7 giugno 2026 · Arriva Martina
+## 0.0.1 alpha 2 · 8 giugno 2026 · Arriva Martina
 
 ### Novità
 - Martina entra nel cast, con il suo ritratto
 - Il Bar Garage ha uno sfondo nuovo
 - Manuale dell'agente e impostazioni
-- Un editor interno per disegnare scene, dialoghi e indizi più in fretta
 
 ### Grafica
 - Nuovi sfondi per il vicolo e l'auto sospetta
+- Nuovo ritratto di Davide
 
-## 0.0.1 alpha 2 · 29 maggio 2026 · L'ufficio e i primi traguardi
+## 0.0.1 alpha 1 · 29 maggio 2026 · Prime ambientazioni e dialoghi
 
 ### Novità
-- L'ufficio dell'agente, con distintivo, foto e diario da trovare
+- L'ufficio dell'agente, con i primi oggetti da ispezionare
 - Kiril si unisce ai personaggi
-- La scheda del caso con Federico Masia
-- I traguardi da sbloccare durante l'indagine
+- Prime scene e dialoghi, con le scelte di risposta
+- Ambientazioni rivisitte
 
 ### Grafica
 - Ritratti dei personaggi scontornati
 - La scrivania della schermata iniziale
+- Nuove ambientazioni: vicolo, auto sospetta e Bar Garage
 
-## 0.0.1 alpha 1 · 22 maggio 2026 · Si apre il fascicolo
+## 0.0.1 alpha 0 · 20 maggio 2026 · Si apre il caso
 
 La primissima versione del gioco.
+Con la prima scena, il primo dialogo e i primi indizi da raccogliere.
 
 ### Novità
 - Il vicolo, l'auto sospetta e il Bar Garage
 - Davide e Marco, i primi personaggi
 - I primi indizi della scena del crimine
-- Musica ed effetti sonori
+- Musica ed effetti sonori riempitivi
 
 `;
